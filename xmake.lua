@@ -5,9 +5,9 @@ if is_arch("x64", "x86_64", "arm64") then
 	set_policy("build.ccache", false)
 	-- set bin dir
 	if is_mode("debug") then
-		set_targetdir(path.join(os.projectdir(), "bin_debug"))
+		set_targetdir("bin_debug")
 	else
-		set_targetdir(path.join(os.projectdir(), "bin_release"))
+		set_targetdir("bin_release")
 	end
 	includes("xmake_func.lua")
 	target("glm")
