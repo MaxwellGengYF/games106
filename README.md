@@ -11,9 +11,12 @@
 ### XMake
 
 新增了xmake编译支持（目前仅测试了windows平台clang与msvc编译器），命令行:
+
 xmake f --toolchain=clang -c
+
 xmake
-同时提供了VSCode支持。
+
+同时提供了VSCode设置支持: .vscode/settings.json。
 
 ## HomeWork
 
