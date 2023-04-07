@@ -8,6 +8,13 @@
 
 详情可以查看项目原来的 [BUILD文档](./BUILD.md) ，可以在Windows/Linux/Andorid/macOS/iOS中构建
 
+### XMake
+
+新增了xmake编译支持（目前仅测试了windows平台clang与msvc编译器），命令行:
+xmake f --toolchain=clang -c
+xmake
+同时提供了VSCode支持。
+
 ## HomeWork
 
 作业的课程代码在./homework目录下，shader在./data/homework/shaders下。上传作业也按照一样的文件结构。上传对应的文件即可。
