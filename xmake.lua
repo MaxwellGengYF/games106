@@ -36,15 +36,7 @@ if is_arch("x64", "x86_64", "arm64") then
 	})
 	add_includedirs("external/ktx/other_include")
 	local ktx_path = "external/ktx/lib/"
-	local file_lists = {
-		"hashlist",
-		"hashtable",
-		"swap",
-		"texture",
-		"filestream",
-		"memstream",
-		"checkheader"
-	}
+	local file_lists = {"hashlist", "hashtable", "swap", "texture", "filestream", "memstream", "checkheader"}
 	for i, v in ipairs(file_lists) do
 		add_files(ktx_path .. v .. '.c')
 	end
@@ -54,10 +46,16 @@ if is_arch("x64", "x86_64", "arm64") then
 	_config_project({
 		project_kind = "static"
 	})
-	add_syslinks("Gdi32", {public = true})
+	if is_plat("windows") then
+		add_syslinks("Gdi32", {
+			public = true
+		})
+	end
 	add_files("base/**.cpp")
 	add_deps("glm", "imgui", "ktx")
-	add_includedirs("base", "external/tinygltf", {public = true})
+	add_includedirs("base", "external/tinygltf", {
+		public = true
+	})
 	add_rules("games106_vulkan")
 	target_end()
 
