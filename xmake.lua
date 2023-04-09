@@ -19,17 +19,30 @@ if is_arch("x64", "x86_64", "arm64") then
 
 	target("imgui")
 	_config_project({
-		project_kind = "static"
+		project_kind = "shared"
 	})
 	add_includedirs("external/imgui", {
 		public = true
 	})
+	if is_plat("windows") then
+		add_defines("IMGUI_API=__declspec(dllexport)")
+	end
 	add_files("external/imgui/**.cpp")
+	target_end()
+
+	target("imgui_public")
+	set_kind("phony")
+	add_deps("imgui")
+	if is_plat("windows") then
+		add_defines("IMGUI_API=__declspec(dllimport)", {
+			public = true
+		})
+	end
 	target_end()
 
 	target("ktx")
 	_config_project({
-		project_kind = "static"
+		project_kind = "object"
 	})
 	add_includedirs("external/ktx/include", {
 		public = true
@@ -44,15 +57,15 @@ if is_arch("x64", "x86_64", "arm64") then
 
 	target("vulkan-base")
 	_config_project({
-		project_kind = "static"
+		project_kind = "object"
 	})
 	if is_plat("windows") then
-		add_syslinks("Gdi32", {
+		add_syslinks("Gdi32", "User32", {
 			public = true
 		})
 	end
 	add_files("base/**.cpp")
-	add_deps("glm", "imgui", "ktx")
+	add_deps("glm", "imgui_public", "ktx")
 	add_includedirs("base", "external/tinygltf", {
 		public = true
 	})
