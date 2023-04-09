@@ -42,7 +42,7 @@ if is_arch("x64", "x86_64", "arm64") then
 
 	target("ktx")
 	_config_project({
-		project_kind = "object"
+		project_kind = "static"
 	})
 	add_includedirs("external/ktx/include", {
 		public = true
@@ -57,7 +57,7 @@ if is_arch("x64", "x86_64", "arm64") then
 
 	target("vulkan-base")
 	_config_project({
-		project_kind = "object"
+		project_kind = "static"
 	})
 	if is_plat("windows") then
 		add_syslinks("Gdi32", "User32", {

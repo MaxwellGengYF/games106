@@ -1,6 +1,7 @@
 {
   "xmake.additionalConfigArguments": [
-    "--toolchain=clang"
+    "--cc=clang",
+    "--cxx=clang",
   ],
   "C_Cpp.codeAnalysis.runAutomatically": false,
   "C_Cpp.intelliSenseEngine": "Disabled",
