@@ -19,7 +19,8 @@ if is_arch("x64", "x86_64", "arm64") then
 
 	target("imgui")
 	_config_project({
-		project_kind = "shared"
+		project_kind = "shared",
+		enable_exception = true
 	})
 	add_includedirs("external/imgui", {
 		public = true
@@ -42,7 +43,8 @@ if is_arch("x64", "x86_64", "arm64") then
 
 	target("ktx")
 	_config_project({
-		project_kind = "static"
+		project_kind = "static",
+		enable_exception = true
 	})
 	add_includedirs("external/ktx/include", {
 		public = true
@@ -57,7 +59,8 @@ if is_arch("x64", "x86_64", "arm64") then
 
 	target("vulkan-base")
 	_config_project({
-		project_kind = "static"
+		project_kind = "static",
+		enable_exception = true
 	})
 	if is_plat("windows") then
 		add_syslinks("Gdi32", "User32", {

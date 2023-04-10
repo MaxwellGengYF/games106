@@ -1,4 +1,16 @@
 -- Global config
+rule("platform_defines")
+on_load(function(target)
+	if is_plat("windows") then
+		target:add("defines", "GAMES106_WINDOWS")
+	elseif is_plat("macosx") then
+		target:add("defines", "GAMES106_MACOSX")
+	elseif is_plat("linux") then
+		target:add("defines", "GAMES106_LINUX")
+	end
+end)
+rule_end()
+
 rule("games106_vulkan")
 on_load(function(target)
 	local function get_path()
@@ -111,7 +123,6 @@ if _configs == nil then
 	_configs = {}
 end
 _configs["use_simd"] = true
-_configs["enable_exception"] = true
 function _config_project(config)
 	if type(_configs) == "table" then
 		for k, v in pairs(_configs) do
