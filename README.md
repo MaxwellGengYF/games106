@@ -10,9 +10,21 @@
 
 ### XMake
 
-新增了xmake编译支持（目前仅测试了windows平台clang与msvc编译器），命令行:
+新增了xmake编译支持（目前仅测试了windows平台LLVM与MSVC工具链），命令行:
 
-xmake f --toolchain=clang -c
+使用LLVM工具链：
+
+xmake f --toolchain=llvm -c
+
+若提示"llvm toolchain not found!"。请手动指定LLVM路径：
+
+xmake f --toolchain=llvm -sdk=#LLVM_DIR# -c
+
+Windows平台可使用MSVC工具链：
+
+xmake f --toolchain=msvc -c
+
+启动编译：
 
 xmake
 
