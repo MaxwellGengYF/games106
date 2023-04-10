@@ -238,3 +238,4 @@ data/font*.*
 data/roboto*.*
 
 .vscode/compile_commands.json
+.vscode/settings.json
